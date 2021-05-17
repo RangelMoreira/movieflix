@@ -4,21 +4,52 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_user")
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(unique = true)
+	private String email;
+	
 	private String name;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "tb_user_role",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
+	
+	@OneToMany(mappedBy = "user")
+	private Set<Review> reviews = new HashSet<>();
 	
 	public User() {
 		
 	}
 
-	public User(Long id, String name) {
+	public User(Long id, String email, String name, Set<Role> roles) {
+		super();
 		this.id = id;
+		this.email = email;
 		this.name = name;
+		this.roles = roles;
 	}
 
 	public Long getId() {
@@ -27,6 +58,14 @@ public class User implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getName() {
@@ -40,7 +79,11 @@ public class User implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+		
+	public Set<Review> getReviews() {
+		return reviews;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

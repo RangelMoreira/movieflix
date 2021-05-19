@@ -22,7 +22,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import com.devsuperior.movieflix.dto.GenreDTO;
-import com.devsuperior.movieflix.repositories.GenreRepository;
+import com.devsuperior.movieflix.repositories.GenereRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
@@ -34,7 +34,7 @@ public class GenreResourceIT {
 	private MockMvc mockMvc;
 
 	@Autowired
-	private GenreRepository genreRepository;
+	private GenereRepository genreRepository;
 	
 	@Autowired
 	private ObjectMapper objectMapper;

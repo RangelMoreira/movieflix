@@ -44,7 +44,7 @@ INSERT INTO TB_MOVIE (title, sub_title, synopsis, year, genere_id, img_url) VALU
   'Dani, que está de luto, convida-se para se juntar a Christian e seus amigos em uma viagem para um festival de verão único em uma remota vila sueca.', 
   2019, 
   1, 
-  'https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/4Ni6XbdQV4xpR9IrT94BXH8PCcw.jpg'
+  'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/g6GtOfXtzDpY73ef7wludoorTti.jpg'
 );
 
 INSERT INTO TB_MOVIE (title, sub_title, synopsis, year, genere_id, img_url) VALUES 
@@ -137,3 +137,10 @@ INSERT INTO TB_MOVIE (title, sub_title, synopsis, year, genere_id, img_url) VALU
   'https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/pgDeN5g7EBHCU9MwwvVxr4hefs8.jpg'
 );
 
+/*Review*/
+INSERT INTO TB_REVIEW (text,movie_id,user_id) VALUES ('Uma Palhaçada',1, 2);
+INSERT INTO TB_REVIEW (text,movie_id,user_id) VALUES ('Arrepilante',1, 2);
+
+INSERT INTO TB_REVIEW (text,movie_id,user_id) VALUES ('Muito bom!',7, 2);
+
+INSERT INTO TB_REVIEW (text,movie_id,user_id) VALUES ('Me lembra os velhos tempos',12, 2);

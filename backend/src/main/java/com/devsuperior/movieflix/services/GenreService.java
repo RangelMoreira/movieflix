@@ -24,7 +24,6 @@ public class GenreService {
 		
 		List<GenreDTO> listDTO = list.stream().map(x -> new GenreDTO(x))
 				.collect(Collectors.toList());
-		
 		return (listDTO);
 	}
 }

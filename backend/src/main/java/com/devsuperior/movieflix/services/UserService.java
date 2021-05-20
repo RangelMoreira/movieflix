@@ -1,5 +1,6 @@
 package com.devsuperior.movieflix.services;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +32,5 @@ public class UserService implements UserDetailsService {
 		logger.info("User found: "+ username);
 		return user;
 	}
+	
 }

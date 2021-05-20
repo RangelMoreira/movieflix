@@ -45,6 +45,7 @@ public class User implements UserDetails, Serializable{
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 	
+	
 	@OneToMany(mappedBy = "user")
 	private Set<Review> reviews = new HashSet<>();
 	

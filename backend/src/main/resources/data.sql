@@ -1,6 +1,7 @@
 /*user*/
 INSERT INTO tb_user (name, email, password) VALUES ('Bob', 'bob@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (name, email, password) VALUES ('Ana',  'ana@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (name, email, password) VALUES ('Ruy', 'ruy@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 
 /*Role*/
 INSERT INTO tb_role (authority) VALUES ('ROLE_VISITOR');
@@ -9,6 +10,7 @@ INSERT INTO tb_role (authority) VALUES ('ROLE_MEMBER');
 /*User_Roles*/
 INSERT INTO TB_USER_ROLE (user_id,role_id)  VALUES(1,1);
 INSERT INTO TB_USER_ROLE (user_id,role_id) VALUES (2,2);
+INSERT INTO TB_USER_ROLE (user_id,role_id) VALUES (3,2);
 
 /*Genere*/
 INSERT INTO TB_GENERE (name) VALUES ('Terror');
@@ -54,7 +56,7 @@ INSERT INTO TB_MOVIE (title, sub_title, synopsis, year, genere_id, img_url) VALU
   'Uma equipe de documentários britânica viaja aos EUA para visitar Michael na prisão, para uma retrospectiva sobre a noite de terror.', 
   2018, 
   1, 
-  'https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/4Ni6XbdQV4xpR9IrT94BXH8PCcw.jpg'
+  'https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/hI2KATJN6dti4bKITw2hTGW7v2n.jpg'
 );
 
 INSERT INTO TB_MOVIE (title, sub_title, synopsis, year, genere_id, img_url) VALUES 
@@ -137,8 +139,28 @@ INSERT INTO TB_MOVIE (title, sub_title, synopsis, year, genere_id, img_url) VALU
   'https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/pgDeN5g7EBHCU9MwwvVxr4hefs8.jpg'
 );
 
+INSERT INTO TB_MOVIE (title, sub_title, synopsis, year, genere_id, img_url) VALUES 
+(
+  'Como Se Fosse a Primeira Vez', 
+  'Como Se Fosse a Primeira Vez.', 
+  'Henry Roth (Adam Sandler) é um veterinário paquerador, que vive no Havaí e é famoso pelo grande número de turistas que conquista. ', 
+  2004, 
+  4, 
+  'https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/lwgI787F1s5mzsOKL4bd4dZgnmy.jpg'
+);
+
+INSERT INTO TB_MOVIE (title, sub_title, synopsis, year, genere_id, img_url) VALUES 
+(
+  'Hitch: Conselheiro Amoroso', 
+  'The cure for the common man.', 
+  'Um consultor de relacionamentos que trabalha de forma anônima é contratado para ajudar um contador tímido a conquistar a mulher dos seus sonhos.', 
+  2005, 
+  4, 
+  'https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/3uQJ4aM3xGzv8qE6pbzEEzd29O2.jpg'
+);
+
 /*Review*/
-INSERT INTO TB_REVIEW (text,movie_id,user_id) VALUES ('Uma Palhaçada',1, 2);
+INSERT INTO TB_REVIEW (text,movie_id,user_id) VALUES ('Uma Palhaçada',1, 3);
 INSERT INTO TB_REVIEW (text,movie_id,user_id) VALUES ('Arrepilante',1, 2);
 
 INSERT INTO TB_REVIEW (text,movie_id,user_id) VALUES ('Muito bom!',7, 2);

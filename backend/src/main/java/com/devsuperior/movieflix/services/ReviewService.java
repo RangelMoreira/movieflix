@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,38 +20,42 @@ public class ReviewService {
 
 	@Autowired
 	private ReviewRepository repository;
-	
-	
+
+	@Autowired
+	private AuthService authService;
+
 	@Transactional(readOnly = true)
-	public List<ReviewDTO> findByMovieId(Movie movie){
+	public List<ReviewDTO> findByMovieId(Movie movie) {
 		List<Review> list = repository.findByMovieId(movie);
-		List<ReviewDTO> listDTO = list.stream().map(x -> new ReviewDTO(x))
-				.collect(Collectors.toList());
-		return (listDTO);	
+		List<ReviewDTO> listDTO = list.stream().map(x -> new ReviewDTO(x)).collect(Collectors.toList());
+		return (listDTO);
 	}
-	
-//	@Transactional
-//	public ReviewDTO insert(ReviewDTO dto) {
-//		Review entity = new Review();
-//		copyDtoToEntity(dto, entity);
-//		entity = repository.save(entity);
-//		return new ReviewDTO(entity);
-//	}
-//	
-//	private void copyDtoToEntity(ReviewDTO dto, Review entity) {
-//		
-//		entity.setText(dto.getText());
-//		entity.seUser(dto.get);
-//		entity.setImgUrl(dto.getImgUrl());
-//		entity.setDate(dto.getDate());
-//		entity.setPrice(dto.getPrice());
-//		
-//		entity.getCategories().clear();
-//		for (CategoryDTO catDto: dto.getCategories()) {
-//			Category category = categoryRepository.getOne(catDto.getId());
-//			entity.getCategories().add(category);
-//		}
-//		
-//	}
-	
+
+	@PreAuthorize("hasAnyRole('MEMBER')")
+	@Transactional
+	public ReviewDTO insert(ReviewDTO dto) {
+		
+		authService.validateIsMember();
+		
+		Review entity = new Review();
+		copyDtoToEntity(dto, entity);
+		entity = repository.save(entity);
+		return new ReviewDTO(entity);
+		
+	}
+
+	private void copyDtoToEntity(ReviewDTO dto, Review entity) {
+
+		entity.setText(dto.getText());
+		entity.setId(dto.getId());
+
+		entity.setUser(authService.authenticated());
+
+		Movie movie = new Movie();
+		movie.setId(dto.getMovieId());
+
+		entity.setMovie(movie);
+
+	}
+
 }

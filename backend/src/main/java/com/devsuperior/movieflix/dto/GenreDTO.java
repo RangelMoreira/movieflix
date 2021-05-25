@@ -4,15 +4,15 @@ import java.io.Serializable;
 
 import com.devsuperior.movieflix.entities.Genre;
 
-public class GenreDTO implements Serializable{
+public class GenreDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 	private String name;
-	
+
 	public GenreDTO() {
-		
+
 	}
 
 	public GenreDTO(Long id, String name) {
@@ -20,7 +20,7 @@ public class GenreDTO implements Serializable{
 		this.id = id;
 		this.name = name;
 	}
-	
+
 	public GenreDTO(Genre entitie) {
 		id = entitie.getId();
 		name = entitie.getName();
@@ -41,6 +41,5 @@ public class GenreDTO implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
 }

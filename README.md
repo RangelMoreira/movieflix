@@ -2,11 +2,9 @@
 
 # Sobre o projeto
 
-Movieflix é uma aplicação full stack web,Java Spring Boot, React JS e React Native, construída durante o Bootcamp da [DevSuperior](https://devsuperior.com/).
+Movieflix é uma aplicação full stack web, desenvolvida com Java Spring Boot, React JS e React Native, construída durante o Bootcamp da [DevSuperior](https://devsuperior.com/).
 
-A aplicação consiste em um catálogo de filmes que podem ser filtrados por gêneros, e os usuários com a permissão de mebro podem adicionar avaliações aos filmes.
-
-## Modelo conceitual
+A aplicação consiste em um catálogo de filmes que podem ser filtrados por gêneros, e os usuários com a permissão de membro podem adicionar avaliações aos filmes.
 
 # Tecnologias utilizadas
 
@@ -23,7 +21,7 @@ Pré-requisitos: Java 11
 
 ```
 # clonar repositório
-git clone https://github.com/RangelMoreira/projeto-sds3/tree/main/backend
+git clone https://github.com/RangelMoreira/movieflix-backend-tests
 
 # entrar na pasta do projeto back end
 cd backend

@@ -21,7 +21,7 @@ Pré-requisitos: Java 11
 
 ```
 # clonar repositório
-git clone https://github.com/RangelMoreira/movieflix-backend-tests
+git clone https://github.com/RangelMoreira/movieflix.git
 
 # entrar na pasta do projeto back end
 cd backend

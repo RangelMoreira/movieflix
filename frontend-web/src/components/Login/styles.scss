@@ -1,0 +1,57 @@
+.loginform {
+  width: 479px;
+  height: 573px;
+  background: #6c6c6c;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 74px 44px 96px 44px;
+
+  .login-title {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 65px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    margin-bottom: 55px;
+  }
+
+  .input-login {
+    background: #fefefe;
+    border: 1px solid #fefefe;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 392px;
+    height: 44px;
+
+    &::placeholder {
+      padding-left: 20px;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 25px;
+      letter-spacing: -0.015em;
+      color: #9e9e9e;
+    }
+  }
+
+  .pass {
+    margin: 32px 0px 79px 0px;
+  }
+}
+@media (max-width: 768px) {
+  .loginform {
+    width: 379px;
+    height: 473px;
+    margin: 20px 0px;
+
+    .login-title {
+      font-size: 38px;
+    }
+
+    .input-login {
+      width: 292px;
+    }
+  }
+ 
+}

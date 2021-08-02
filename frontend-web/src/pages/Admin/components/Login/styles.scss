@@ -36,8 +36,22 @@
   }
 
   .pass {
-    margin: 32px 0px 79px 0px;
+    margin: 32px 0px 0px 0px;
   }
+
+  .alert-danger{
+    background-color: #f8d7da;
+    color: #842029;
+    border-radius: 10px;
+  }
+  .invalid-feedback{
+    color: #fff;
+  
+  }
+  .button-icon{
+    margin-top: 79px;
+  }
+
 }
 @media (max-width: 768px) {
   .loginform {

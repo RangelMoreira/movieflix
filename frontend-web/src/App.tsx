@@ -1,11 +1,11 @@
 import './core/assets/styles/custom.scss';
 import './app.scss';
-import Home from './pages/Home';
+import Routes from './Routes';
 
 function App() {
   return (
     <div className="App">
-      <Home/>
+      <Routes/>
     </div>
   );
 }

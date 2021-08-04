@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
-import { CLIENT_ID, CLIENT_SECRET } from './auth';
+import { CLIENT_ID, CLIENT_SECRET, logout } from './auth';
 
 
 
@@ -11,6 +11,14 @@ type LoginData = {
 
 const BASE_URL = process.env.REACT_APP_BACKEND_URL ?? 'http://localhost:8080';
 
+axios.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  if (error.response.status === 401) {
+    logout();
+  }
+  return Promise.reject(error);
+});
 
 export const makeRequest = (params: AxiosRequestConfig) => {
   return axios({

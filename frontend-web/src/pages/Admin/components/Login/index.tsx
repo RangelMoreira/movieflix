@@ -24,7 +24,7 @@ const Login = () => {
       .then(response => {
         setHasError(false);
         saveSessionData(response.data);
-        history.push('/home');
+        history.push('/catalog');
         //.replace(from);
       })
       .catch(() => {

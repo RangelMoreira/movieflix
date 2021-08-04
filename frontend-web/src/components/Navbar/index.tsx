@@ -1,28 +1,35 @@
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { getSessionData } from '../../core/utils/auth';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { getAccessTokenDecoded, isAuthenticated, logout } from '../../core/utils/auth';
 import './styles.scss';
 
 const Navbar = () => {
-  const [isLogged, setIsLogged] = useState(false);
-  const history = useHistory();
+  const [currentUser, setCurrentUser] = useState(''); 
+  const location = useLocation();
 
-  const logout = () =>{
-    localStorage.removeItem('authData');
-    //history.replace('/');
+  const handleLogout = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    event.preventDefault();
+    logout();
   }
+
+  useEffect(() => {
+    const currentUserData = getAccessTokenDecoded();
+    setCurrentUser(currentUserData.user_name);
+  }, [location])
 
   return (
     <nav className="bg-primary main-nav">
       <h1 className="nav-logo">MovieFlix</h1>
 
-      {isLogged  && (
-        <button
+      {currentUser && (
+        <a
+          href="#logout"
           type="button"
           className="btn-logout"
+          onClick={(event) => handleLogout(event)}
         >
           SAIR
-        </button>
+        </a>
       )}
     </nav>
 

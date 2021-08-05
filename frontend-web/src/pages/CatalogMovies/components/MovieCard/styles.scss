@@ -1,0 +1,40 @@
+.movie-card {
+  width: 270px;
+  height: 322px;
+  .product-card-image {
+    width: 100%;
+    margin-top: 23px;
+    height: 164, 09px;
+  }
+
+  .content {
+    margin: 13px 14px;
+    
+  }
+  .title {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 27px;
+    letter-spacing: -0.015em;
+  }
+
+  .year {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.015em;
+    color: #ffc700;
+  }
+  .description {
+    text-decoration: none !important;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: -0.015em;
+    max-height: 5ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+
+  
+}

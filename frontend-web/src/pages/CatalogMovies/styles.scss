@@ -1,3 +1,20 @@
 .main{
   padding: 47px 98px 56px 98px;
+
+  .movies{
+    margin-top: 43px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    grid-gap: 30px 33px;
+    justify-content: space-between;
+  }
 }
+
+a {
+  color: #fff;
+  text-decoration: none;
+  &:hover{
+    color: #fff;
+  }
+}
+

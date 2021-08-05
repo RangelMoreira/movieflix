@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getAccessTokenDecoded, isAuthenticated, logout } from '../../core/utils/auth';
+import { getAccessTokenDecoded, logout } from '../../core/utils/auth';
 import './styles.scss';
 
 const Navbar = () => {

@@ -3,8 +3,9 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Filter from '../../components/MovieFilter';
 import Pagination from '../../components/Pagination';
-import { MovieResponse } from '../../core/types/Movie';
+import { MovieResponse, Genre } from '../../core/types/Movie';
 import { makePrivateRequest} from '../../core/utils/request';
+import MovieCardLoader from './components/Loaders/MovieCardLoader';
 import MovieCard from './components/MovieCard';
 import './styles.scss';
 
@@ -12,15 +13,14 @@ const CatalogMovies = () => {
   const [movieResponse, setMovieResponse] = useState<MovieResponse>();
   const [isLoading, setIsLoading] = useState(false);
   const [activePage, setActivePage] = useState(0);
-  const [name, setName] = useState('');
+  const [genre, setGenre] = useState<Genre>();
 
 
   const getMovies = useCallback(() => {
     const params = {
       page: activePage,
       linesPerPage: 8,
-      name: name,
-      //genreId: genreId?.id
+      genreId: genre?.id
 
     }
     setIsLoading(true);
@@ -29,22 +29,30 @@ const CatalogMovies = () => {
       .finally(() => {
         setIsLoading(false);
       })
-  }, [activePage, name]);
+  }, [activePage, genre]);
 
   useEffect(() => {
     getMovies();
   }, [getMovies]);
 
+  const handleChangeGenre = (genre: Genre) => {
+    setActivePage(0);
+    setGenre(genre);
+  }
 
   return (
     <div className="main">
-      <Filter />
+      <Filter 
+        genre={genre}
+        handleChangeGenre={handleChangeGenre}
+      />
       <div className="movies">
-        {movieResponse?.content.map(movie => (
+        {isLoading ? <MovieCardLoader /> : 
+        (movieResponse?.content.map(movie => (
           <Link to={`/movies/${movie.id}`} key={movie.id}>
             <MovieCard movie={movie} />
           </Link>
-        ))}
+        )))}
       </div>
       
       {movieResponse &&

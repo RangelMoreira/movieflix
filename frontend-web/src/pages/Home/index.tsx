@@ -1,4 +1,3 @@
-import Navbar from "../../components/Navbar";
 import { ReactComponent as LoginDrawn } from '../../core/assets/images/login-drawn.svg';
 import Login from "../Admin/components/Login";
 import './styles.scss';

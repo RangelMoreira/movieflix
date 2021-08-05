@@ -15,7 +15,7 @@ export type Movie = {
   genere: string
 }
 
-export type Category = {
-  text:string,
-  movieId: number
+export type Genre = {
+  name:string,
+  id: number
 }

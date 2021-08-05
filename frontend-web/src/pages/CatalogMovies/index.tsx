@@ -2,8 +2,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Filter from '../../components/MovieFilter';
+import Pagination from '../../components/Pagination';
 import { MovieResponse } from '../../core/types/Movie';
-import { makePrivateRequest, makeRequest } from '../../core/utils/request';
+import { makePrivateRequest} from '../../core/utils/request';
 import MovieCard from './components/MovieCard';
 import './styles.scss';
 
@@ -45,6 +46,14 @@ const CatalogMovies = () => {
           </Link>
         ))}
       </div>
+      
+      {movieResponse &&
+        <Pagination
+          totalPages={movieResponse?.totalPages}
+          activePage={activePage}
+          onChange={page => setActivePage(page)}
+        />
+      }
 
 
     </div>

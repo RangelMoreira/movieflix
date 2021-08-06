@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import PrivateRoute from './components/Routes/PrivateRoute';
 import CatalogMovies from './pages/CatalogMovies';
 import Home from './pages/Home';
+import MovieDetails from './pages/MovieDetails';
 
 
 const Routes = () =>(
@@ -18,6 +19,9 @@ const Routes = () =>(
         <CatalogMovies/>
       </PrivateRoute>
 
+      <PrivateRoute path="/movies/:productId">
+        <MovieDetails/>
+      </PrivateRoute>
 
     </Switch>
  </BrowserRouter>

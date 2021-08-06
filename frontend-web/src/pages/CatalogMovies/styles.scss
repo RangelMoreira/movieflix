@@ -1,10 +1,11 @@
-.main{
+.main {
   padding: 47px 98px 56px 98px;
-
-  .movies{
+  
+  .movies {
+    width: 100%;
     margin-top: 43px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 250px);
+    grid-template-columns: repeat(auto-fill, 251px);
     grid-gap: 30px 33px;
     justify-content: space-between;
   }
@@ -13,8 +14,35 @@
 a {
   color: #fff;
   text-decoration: none;
-  &:hover{
+  &:hover {
     color: #fff;
   }
 }
 
+//tablet
+@media (max-width: 768px) {
+  .main {
+    padding: 20px 10px;
+    .filter-container {
+      flex-direction: column;
+      align-items: flex-start; //alinha no início da tela
+      margin-bottom: 20px;
+    }
+    .movies {
+      grid-template-columns: repeat(auto-fill, 350px);
+      grid-gap: 33px 10px;
+      width: 100%;
+
+      margin: 0 auto;
+    }
+  }
+}
+
+//mobile
+@media (max-width: 576px) {
+  .main {
+    .movies {
+      grid-template-columns: none;
+    }
+  }
+}

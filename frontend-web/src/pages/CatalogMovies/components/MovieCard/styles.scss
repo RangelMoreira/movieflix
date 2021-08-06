@@ -33,8 +33,26 @@
     max-height: 5ch;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 
   }
+}
 
-  
+//tablet
+@media(max-width: 768px){
+  .movie-card {
+    width: 100%;
+    height: 100%;
+    white-space: normal;
+  }
+ 
+}
+
+//mobile
+@media (max-width: 576px) {
+  .movie-card {
+    .description {
+      white-space: normal;
+    }
+  }
 }

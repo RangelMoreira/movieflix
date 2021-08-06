@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Filter from '../../components/MovieFilter';
 import Pagination from '../../components/Pagination';
 import { MovieResponse, Genre } from '../../core/types/Movie';
-import { makePrivateRequest} from '../../core/utils/request';
+import { makePrivateRequest } from '../../core/utils/request';
 import MovieCardLoader from './components/Loaders/MovieCardLoader';
 import MovieCard from './components/MovieCard';
 import './styles.scss';
@@ -42,19 +42,21 @@ const CatalogMovies = () => {
 
   return (
     <div className="main">
-      <Filter 
-        genre={genre}
-        handleChangeGenre={handleChangeGenre}
-      />
-      <div className="movies">
-        {isLoading ? <MovieCardLoader /> : 
-        (movieResponse?.content.map(movie => (
-          <Link to={`/movies/${movie.id}`} key={movie.id}>
-            <MovieCard movie={movie} />
-          </Link>
-        )))}
+      <div className="filter-container">
+        <Filter
+          genre={genre}
+          handleChangeGenre={handleChangeGenre}
+        />
       </div>
-      
+      <div className="movies">
+        {isLoading ? <MovieCardLoader /> :
+          (movieResponse?.content.map(movie => (
+            <Link to={`/movies/${movie.id}`} key={movie.id}>
+              <MovieCard movie={movie} />
+            </Link>
+          )))}
+      </div>
+
       {movieResponse &&
         <Pagination
           totalPages={movieResponse?.totalPages}

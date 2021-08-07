@@ -69,5 +69,6 @@ export const isAllowedByRole = (routesRoles: Role[] = []) => {
 export const logout = () =>{
   localStorage.removeItem('authData');
   history.replace('/');
+  window.location.reload();
 }
 

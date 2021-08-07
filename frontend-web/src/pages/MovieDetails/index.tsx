@@ -1,20 +1,41 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Movie } from '../../core/types/Movie';
+import { makePrivateRequest } from '../../core/utils/request';
 import './styles.scss';
 
+type ParamsType = {
+  movieId: string;
+}
+
 const MovieDetails = () => {
+  const { movieId } = useParams<ParamsType>();
+  const [movie, setMovie] = useState<Movie>();
+  const [isLoading, setIsLoading] = useState(false);
+  
+  useEffect(() => {
+    setIsLoading(true);
+    makePrivateRequest({ url: `/movies/${movieId}` })
+      .then(response => setMovie(response.data))
+      .finally(() => setIsLoading(false));
+
+  }, [movieId]);
+
+
   return (
     <div className="main">
       <div className="card-base details-card">
         <div className="image">
           <img
-            src="https://www.themoviedb.org/t/p/w1066_and_h600_bestv2/4Ni6XbdQV4xpR9IrT94BXH8PCcw.jpg"
-            alt="imagem"
+            src={movie?.imgUrl}
+            alt={movie?.title}
           />
         </div>
         <div className="details">
-          <h1 className="title">Titulo</h1>
-          <span className="year">2000</span>
+          <h1 className="title">{movie?.title}</h1>
+          <span className="year">{movie?.year}</span>
           <div className="description">
-            Mussum Ipsum, cacilds vidis litro abertis. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! Leite de capivaris, leite de mula manquis sem cabeça. Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.
+           {movie?.synopsis}
           </div>
         </div>
       </div>
@@ -26,13 +47,14 @@ const MovieDetails = () => {
         </button>
       </div>
 
-      <div className="evaluations card-base">
-        <span className="author">⭐Nome</span>
-        <div className="description-evaluation">
-        Mussum Ipsum, cacilds vidis litro abertis.
+      
+        <div className="evaluations card-base">
+          <span className="author">⭐Nome</span>
+          <div className="description-evaluation">
+          Mussum Ipsum, cacilds vidis litro abertis.
+          </div>
         </div>
-      </div>
-
+      
     </div>
 
   );

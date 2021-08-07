@@ -12,7 +12,7 @@ const MovieDetails = () => {
   const { movieId } = useParams<ParamsType>();
   const [movie, setMovie] = useState<Movie>();
   const [isLoading, setIsLoading] = useState(false);
-  
+
   useEffect(() => {
     setIsLoading(true);
     makePrivateRequest({ url: `/movies/${movieId}` })
@@ -35,7 +35,7 @@ const MovieDetails = () => {
           <h1 className="title">{movie?.title}</h1>
           <span className="year">{movie?.year}</span>
           <div className="description">
-           {movie?.synopsis}
+            {movie?.synopsis}
           </div>
         </div>
       </div>
@@ -47,14 +47,17 @@ const MovieDetails = () => {
         </button>
       </div>
 
-      
-        <div className="evaluations card-base">
-          <span className="author">⭐Nome</span>
-          <div className="description-evaluation">
-          Mussum Ipsum, cacilds vidis litro abertis.
-          </div>
-        </div>
-      
+      <div className="evaluations card-base">
+        {movie?.reviews.map(review => (
+          <>
+            <span className="author">⭐{review.user.name}</span>
+            <div className="description-evaluation">
+              {review.text}
+            </div>
+          </>
+        )
+        )}
+      </div>
     </div>
 
   );

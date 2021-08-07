@@ -12,6 +12,7 @@ const MovieDetails = () => {
   const { movieId } = useParams<ParamsType>();
   const [movie, setMovie] = useState<Movie>();
   const [isLoading, setIsLoading] = useState(false);
+  const [evaluation, setEvaluation] = useState('');
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,6 +22,17 @@ const MovieDetails = () => {
 
   }, [movieId]);
 
+  const handleChangeEvaluation = (evaluation: string) => {
+    console.log(evaluation);
+
+    setEvaluation(evaluation);
+  }
+
+  const handleClcik = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
+    console.log(evaluation);
+
+  }
 
   return (
     <div className="main">
@@ -40,24 +52,38 @@ const MovieDetails = () => {
         </div>
       </div>
 
-      <div className="make-evaluation card-base">
-        <input type="text" placeholder="Deixe sua avaliação aqui" />
-        <button className="btn btn-primary ">
-          SALVAR AVALIAÇÃO
-        </button>
-      </div>
+      <form action="">
+        <div className="make-evaluation card-base">
 
-      <div className="evaluations card-base">
-        {movie?.reviews.map(review => (
-          <>
-            <span className="author">⭐{review.user.name}</span>
-            <div className="description-evaluation">
-              {review.text}
+          <input
+            type="text"
+            placeholder="Deixe sua avaliação aqui"
+            onChange={event => handleChangeEvaluation(event.target.value)}
+          />
+          <button
+            className="btn btn-primary"
+            onClick={(event) => handleClcik(event)}
+          >
+            SALVAR AVALIAÇÃO
+          </button>
+
+        </div>
+      </form>
+
+      {movie?.reviews.length !== 0 && (
+        <div className="evaluations card-base">
+          {movie?.reviews.map(review => (
+            <div key={review.id}>
+              <span className="author">⭐ &nbsp; {review.user.name}</span>
+              <div className="description-evaluation">
+                {review.text}
+              </div>
             </div>
-          </>
-        )
-        )}
-      </div>
+          )
+          )}
+        </div>
+      )}
+
     </div>
 
   );

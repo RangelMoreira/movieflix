@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getAccessTokenDecoded, logout } from '../../core/utils/auth';
 import './styles.scss';
 
@@ -19,7 +19,9 @@ const Navbar = () => {
 
   return (
     <nav className="bg-primary main-nav">
-      <h1 className="nav-logo">MovieFlix</h1>
+      <Link to ='/movies'>
+        <h1 className="nav-logo">MovieFlix</h1>
+      </Link>
 
       {currentUser && (
         <a

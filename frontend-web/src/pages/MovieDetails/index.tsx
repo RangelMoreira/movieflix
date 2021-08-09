@@ -1,6 +1,8 @@
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Movie } from '../../core/types/Movie';
+import { isAllowedByRole } from '../../core/utils/auth';
 import { makePrivateRequest } from '../../core/utils/request';
 import MovieDescriptionLoader from '../CatalogMovies/components/Loaders/MovieDescriptionLoader';
 import './styles.scss';
@@ -62,24 +64,26 @@ const MovieDetails = () => {
               </div>
             </div>
 
-            <form action="">
-              <div className="make-evaluation card-base">
+            {isAllowedByRole(['ROLE_MEMBER']) &&(
+              <form action="">
+                <div className="make-evaluation card-base">
 
-                <input
-                  type="text"
-                  placeholder="Deixe sua avaliação aqui"
-                  onChange={event => handleChangeEvaluation(event.target.value)}
-                  value={evaluation}
-                />
-                <button
-                  className="btn btn-primary"
-                  onClick={(event) => handleClcik(event)}
-                >
-                  SALVAR AVALIAÇÃO
-                </button>
+                  <input
+                    type="text"
+                    placeholder="Deixe sua avaliação aqui"
+                    onChange={event => handleChangeEvaluation(event.target.value)}
+                    value={evaluation}
+                  />
+                  <button
+                    className="btn btn-primary"
+                    onClick={(event) => handleClcik(event)}
+                  >
+                    SALVAR AVALIAÇÃO
+                  </button>
 
-              </div>
-            </form>
+                </div>
+              </form>
+             )} 
 
             {movie?.reviews.length !== 0 && (
               <div className="evaluations card-base">

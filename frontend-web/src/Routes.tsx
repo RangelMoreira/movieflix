@@ -1,13 +1,14 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import {Switch, Route, Router } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/Routes/PrivateRoute';
 import CatalogMovies from './pages/CatalogMovies';
 import Home from './pages/Home';
 import MovieDetails from './pages/MovieDetails';
+import history from './core/utils/history'
 
 
 const Routes = () =>(
- <BrowserRouter>
+ <Router history={history}>
    <Navbar/>
    <Switch>  
       
@@ -26,7 +27,7 @@ const Routes = () =>(
 
      
     </Switch>
- </BrowserRouter>
+ </Router>
 
 );
 

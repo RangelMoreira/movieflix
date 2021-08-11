@@ -4,7 +4,6 @@ import { isAuthenticated } from '../../core/utils/auth';
 type Props = {
   children: React.ReactNode;
   path: string;
-  // allowedRoutes?: Role[];
 }
 
 const PrivateRoute = ({ children, path }: Props) => {
@@ -24,13 +23,6 @@ const PrivateRoute = ({ children, path }: Props) => {
           )
 
         }
-        //else if (isAuthenticated() ) {
-        //   return (
-        //     <Redirect
-        //       to={{ pathname: "/" }}
-        //     />
-        //   )
-        // }
 
         return children;
 

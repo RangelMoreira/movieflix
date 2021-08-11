@@ -1,5 +1,7 @@
 # MovieFlix
 
+[![NPM](https://camo.githubusercontent.com/a581cd1e13be14972f2eca7065fa686ab5718b9c233570190f92be36ed39664e/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f6c2f7265616374)](https://github.com/RangelMoreira/movieflix/blob/main/LICENSE)
+
 # Sobre o projeto
 
 https://kevin-movieflix.netlify.app
